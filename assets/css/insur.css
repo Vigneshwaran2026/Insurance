@@ -446,7 +446,7 @@ body.loading {
   animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
-  background-image: url(../images/home1/resources/loader1.webp);
+  background-image: url(../images/home1/resources/loader.webp);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 60px auto;
@@ -34532,4 +34532,5 @@ input:focus, textarea:focus {
     text-align: center;
     width: 100%;
     border-radius: 8px;
+
 }
