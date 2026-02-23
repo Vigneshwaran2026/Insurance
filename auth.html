@@ -25,19 +25,18 @@
 
 
 html, body{
-    height:100%;
-    overflow:hidden; /* NO SCROLL */
+    min-height:100%;
+    overflow-x:hidden;   /* allow vertical scroll */
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;   /* Important */
     background:linear-gradient(135deg,#16243d,#015fc9);
-    padding:0;   /* remove large padding */
+    padding:40px 15px;
 }
-
 .form-error{
     margin-top:15px;
     font-size:14px;
@@ -75,8 +74,8 @@ body::before{
     position:relative;
     width:100%;
     max-width:1000px;
-    height:500px;   /* reduced */
-    max-height:100vh;
+    height:auto;
+    max-height:none;
     border-radius:25px;
     display:flex;
     overflow:hidden;
