@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Insurance Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:#fff;
+    overflow-x:hidden;
+}
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+    width:260px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    padding:30px;
+    transition:0.4s ease;
+}
+
+.sidebar h2{
+    margin-bottom:40px;
+    font-weight:700;
+    font-size:22px;
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.menu li{
+    list-style:none;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu li:hover,
+.menu li.active{
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+}
+
+/* ================= MAIN ================= */
+.main{
+    flex:1;
+    padding:40px;
+}
+
+/* ================= TOPBAR ================= */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+/* LEFT SIDE */
+.left-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.home-btn{
+    padding:8px 15px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+    color:#fff;
+    font-size:14px;
+}
+
+.toggle-btn{
+    display:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* RIGHT SIDE */
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #22d3ee;
+}
+
+.profile span{
+    font-weight:600;
+}
+
+/* ================= CARDS ================= */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    padding:25px;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h4{
+    opacity:0.85;
+    font-weight:400;
+}
+
+.card h2{
+    margin-top:10px;
+    font-size:24px;
+}
+
+/* Gradients */
+.g1{background:linear-gradient(135deg,#7c3aed,#9333ea);}
+.g2{background:linear-gradient(135deg,#22d3ee,#0ea5e9);}
+.g3{background:linear-gradient(135deg,#f59e0b,#f97316);}
+.g4{background:linear-gradient(135deg,#10b981,#059669);}
+.g5{background:linear-gradient(135deg,#ef4444,#dc2626);}
+.g6{background:linear-gradient(135deg,#6366f1,#4f46e5);}
+
+/* ================= CHARTS ================= */
+.charts{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+    margin-top:40px;
+}
+
+.chart-box{
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+}
+
+/* ================= TABLE ================= */
+.table-box{
+    margin-top:40px;
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+    overflow-x:auto;
+}
+
+/* ================= TOPBAR ================= */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+/* LEFT */
+.left-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* RIGHT */
+.right-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* Logo Style */
+.logo{
+    font-size:22px;
+    font-weight:700;
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Hide mobile logo by default */
+.mobile-logo{
+    display:none;
+}
+
+/* Hamburger */
+.toggle-btn{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* Profile */
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid #22d3ee;
+}
+
+/* ================= MODERN TABLE ================= */
+
+.table-box{
+    margin-top:40px;
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+    backdrop-filter:blur(20px);
+}
+
+.table-title{
+    margin-bottom:20px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.table-responsive{
+    overflow-x:auto;
+}
+
+.modern-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+.modern-table thead{
+    background:linear-gradient(90deg,#7c3aed,#22d3ee);
+}
+
+.modern-table thead th{
+    padding:14px;
+    text-align:left;
+    font-weight:600;
+    color:#fff;
+}
+
+.modern-table tbody tr{
+    transition:0.3s;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.modern-table tbody tr:hover{
+    background:rgba(255,255,255,0.08);
+}
+
+.modern-table tbody td{
+    padding:14px;
+}
+
+/* Badge Styles */
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.purple{background:#7c3aed;}
+.blue{background:#0ea5e9;}
+.green{background:#10b981;}
+.yellow{background:#f59e0b;}
+.orange{background:#f97316;}
+.red{background:#ef4444;}
+
+/* Status */
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status.good{
+    background:#10b981;
+}
+
+.status.moderate{
+    background:#f59e0b;
+}
+
+.status.low{
+    background:#6366f1;
+}
+
+/* Default (Desktop) */
+.desktop-logo{
+    display:block;
+}
+
+.mobile-logo{
+    display:none;
+}
+
+/* ================= CLEAN MOBILE RESPONSIVE FIX ================= */
+
+@media (max-width:1024px){
+    .charts{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    html, body{
+        width:100%;
+        overflow-x:hidden;
+    }
+
+    .dashboard{
+        flex-direction:column;
+        width:100%;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+        position:fixed;
+        left:-260px;
+        top:0;
+        width:260px;
+        height:100vh;
+        z-index:1000;
+        padding:25px;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    /* MAIN */
+    .main{
+        width:100%;
+        padding:20px 15px;
+    }
+
+    /* TOPBAR */
+    .topbar{
+        width:100%;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .left-top{
+        gap:10px;
+    }
+
+    .right-top{
+        margin-left:auto;
+        gap:10px;
+    }
+
+    /* LOGO VISIBILITY */
+    .desktop-logo{
+        display:none !important;
+    }
+
+    .mobile-logo{
+        display:block !important;
+        font-size:20px;
+    }
+
+    /* HAMBURGER RIGHT SIDE */
+    .toggle-btn{
+        display:block;
+        font-size:24px;
+        margin-left:10px;
+    }
+
+    /* HIDE PROFILE NAME */
+    .profile span{
+        display:none;
+    }
+
+    /* CARDS STACK */
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    /* TABLE SCROLL SAFE */
+    .table-responsive{
+        width:100%;
+        overflow-x:auto;
+    }
+
+}
+
+/* ================= CHART FIX ================= */
+
+.chart-box{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+    position:relative;
+    width:100%;
+}
+
+/* Make canvas responsive */
+.chart-box canvas{
+    width:100% !important;
+    height:auto !important;
+}
+
+/* Mobile chart spacing */
+@media (max-width:768px){
+
+    .charts{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .chart-box{
+        padding:15px;
+    }
+
+}
+
+.chart-box{
+    height:350px;
+}
+
+@media (max-width:768px){
+    .chart-box{
+        height:280px;
+    }
+}
+
+/* Sidebar Logo */
+.sidebar-logo{
+    margin-bottom:40px;
+}
+
+.sidebar-logo img{
+    width:150px;
+    max-width:100%;
+}
+
+/* Mobile Logo */
+.mobile-logo img{
+    width:120px;
+}
+
+/* Optional: small hover animation */
+.sidebar-logo img,
+.mobile-logo img{
+    transition:0.3s ease;
+}
+
+.sidebar-logo img:hover,
+.mobile-logo img:hover{
+    transform:scale(1.05);
+}
+
+.home-btn{
+    text-decoration:none;
+    display:inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+    <img src="assets/images/home1/resources/logo.webp" alt="Stackly Logo">
+</div>
+      <ul class="menu">
+    <li onclick="location.href='dashboard.html'">Dashboard</li>
+    <li onclick="location.href='insurance.html'">Insurance</li>
+    <li class="active" onclick="location.href='claims.html'">Claims</li>
+    <li onclick="location.href='premium.html'">Premium</li>
+    <li onclick="location.href='reports.html'">Reports</li>
+</ul>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="topbar">
+
+    <!-- LEFT SIDE -->
+    <div class="left-top">
+        <a href="index.html" class="home-btn">Home</a>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-top">
+
+        <!-- Mobile Logo -->
+        <div class="logo mobile-logo">
+    <img src="assets/images/home2/resources/logo.webp" alt="Stackly Logo">
+</div>
+
+        <div class="profile">
+            <span>Devon Lane</span>
+            <img src="assets/images/home1/resources/u2.webp">
+        </div>
+
+        <!-- Hamburger -->
+        <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+    </div>
+
+</div>
+
+    <!-- CARDS -->
+<div class="cards">
+    <div class="card g1">
+        <h4>Total Claims</h4>
+        <h2 id="cl1">0</h2>
+    </div>
+
+    <div class="card g2">
+        <h4>Approved Claims</h4>
+        <h2 id="cl2">0</h2>
+    </div>
+
+    <div class="card g3">
+        <h4>Rejected Claims</h4>
+        <h2 id="cl3">0</h2>
+    </div>
+
+    <div class="card g4">
+        <h4>Pending Claims</h4>
+        <h2 id="cl4">0</h2>
+    </div>
+
+    <div class="card g5">
+        <h4>Claim Amount Paid (₹)</h4>
+        <h2 id="cl5">0</h2>
+    </div>
+
+    <div class="card g6">
+        <h4>Average Processing Days</h4>
+        <h2 id="cl6">0</h2>
+    </div>
+</div>
+        <!-- CHARTS -->
+<div class="charts">
+
+    <div class="chart-box">
+        <h3>Monthly Claims Trend</h3>
+        <canvas id="claimsBarChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Claims Type Distribution</h3>
+        <canvas id="claimsPolarChart"></canvas>
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-box">
+    <h3 class="table-title">Claims Performance Summary</h3>
+
+    <div class="table-responsive">
+        <table class="modern-table">
+            <thead>
+                <tr>
+                    <th>Insurance Type</th>
+                    <th>Total Claims</th>
+                    <th>Approved</th>
+                    <th>Rejected</th>
+                    <th>Approval Rate</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Health</td>
+                    <td>120</td>
+                    <td>98</td>
+                    <td>22</td>
+                    <td><span class="badge green">82%</span></td>
+                    <td><span class="status good">Strong</span></td>
+                </tr>
+                <tr>
+                    <td>Life</td>
+                    <td>95</td>
+                    <td>75</td>
+                    <td>20</td>
+                    <td><span class="badge blue">79%</span></td>
+                    <td><span class="status moderate">Average</span></td>
+                </tr>
+                <tr>
+                    <td>Vehicle</td>
+                    <td>70</td>
+                    <td>60</td>
+                    <td>10</td>
+                    <td><span class="badge purple">86%</span></td>
+                    <td><span class="status good">Strong</span></td>
+                </tr>
+                <tr>
+                    <td>Travel</td>
+                    <td>45</td>
+                    <td>32</td>
+                    <td>13</td>
+                    <td><span class="badge orange">71%</span></td>
+                    <td><span class="status moderate">Stable</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<script>
+function toggleSidebar(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+</script>
+
+<script>
+
+// Counter Animation
+function counter(id,target){
+    let count=0;
+    let speed=target/100;
+    let interval=setInterval(()=>{
+        count+=speed;
+        if(count>=target){
+            count=target;
+            clearInterval(interval);
+        }
+        document.getElementById(id).innerText=Math.floor(count);
+    },20);
+}
+
+// Claims Counters
+counter("cl1",330);
+counter("cl2",265);
+counter("cl3",65);
+counter("cl4",48);
+counter("cl5",7800000);
+counter("cl6",12);
+
+
+// 1️⃣ Modern Gradient Bar Chart
+new Chart(document.getElementById('claimsBarChart'),{
+    type:'bar',
+    data:{
+        labels:['Jan','Feb','Mar','Apr','May','Jun'],
+        datasets:[{
+            label:'Claims Registered',
+            data:[45,60,55,75,90,105],
+            backgroundColor:[
+                '#7c3aed',
+                '#22d3ee',
+                '#f97316',
+                '#10b981',
+                '#6366f1',
+                '#ef4444'
+            ],
+            borderRadius:10
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{ labels:{ color:'#fff' } }
+        },
+        scales:{
+            x:{ ticks:{ color:'#fff' } },
+            y:{ ticks:{ color:'#fff' } }
+        }
+    }
+});
+
+
+// 2️⃣ Modern Polar Area Chart
+new Chart(document.getElementById('claimsPolarChart'),{
+    type:'polarArea',
+    data:{
+        labels:['Health','Life','Vehicle','Travel'],
+        datasets:[{
+            data:[120,95,70,45],
+            backgroundColor:[
+                'rgba(124,58,237,0.8)',
+                'rgba(34,211,238,0.8)',
+                'rgba(249,115,22,0.8)',
+                'rgba(16,185,129,0.8)'
+            ]
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{
+                position:'bottom',
+                labels:{ color:'#fff' }
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>

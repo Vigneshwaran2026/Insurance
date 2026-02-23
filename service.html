@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Stackly Insurance </title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css">
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css">
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css">
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css">
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css">
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css">
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css">
+    <link rel="stylesheet" href="assets/vendors/insur-icons/style.css">
+    <link rel="stylesheet" href="assets/vendors/insur-two-icon/style.css">
+    <link rel="stylesheet" href="assets/vendors/insur-four-icon/style.css">
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css">
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css">
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css">
+    <link rel="stylesheet" href="assets/vendors/ion.rangeSlider/css/ion.rangeSlider.min.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" id="langLtr" href="assets/css/insur.css">
+    <link rel="stylesheet" href="assets/css/color-7.css">
+
+
+    <style>
+/* ===============================
+   SECTION
+================================*/
+.insurance-section{
+    max-width:1200px;
+    margin:auto;
+    padding: 20px;
+}
+
+.insurance-wrapper{
+    display:flex;
+    gap:40px;
+}
+
+/* ===============================
+   LEFT MENU
+================================*/
+.insurance-menu{
+    width:280px;
+    background:#0f172a;
+    border-radius:15px;
+    padding:20px;
+}
+
+.insurance-menu ul{
+    list-style:none;
+}
+
+.insurance-menu li{
+    padding:14px 18px;
+    margin-bottom:10px;
+    background:#16243d;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.insurance-menu li:hover,
+.insurance-menu li.active{
+    background:#f4a825;
+    color:#000;
+}
+
+/* ===============================
+   RIGHT CONTENT
+================================*/
+.insurance-content{
+    flex:1;
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.insurance-item{
+    display:none;
+    animation:fadeIn 0.4s ease-in-out;
+}
+
+.insurance-item.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.insurance-item h2{
+    font-size:36px;
+    margin-bottom:20px;
+    color:#16243d;
+}
+
+.insurance-item img{
+    width:100%;
+    max-width:600px;     /* control width */
+    height:350px;        /* fixed height */
+    object-fit:cover;    /* crop properly */
+    border-radius:12px;
+    margin-bottom:25px;
+    display:block;
+}
+
+.age-box{
+    background:#e9eef5;
+    padding:12px 15px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.age-box span{
+    margin-left:20px;
+    color:#015fc9;
+}
+
+.insurance-item h4{
+    margin-top:20px;
+    margin-bottom:10px;
+    font-size:20px;
+    color:#16243d;
+}
+
+.insurance-item p{
+    color:#555;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.feature-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.feature-list li{
+    margin-bottom:8px;
+    padding-left:20px;
+    position:relative;
+}
+
+.feature-list li::before{
+    content:"✔";
+    position:absolute;
+    left:0;
+    color:#f4a825;
+    font-weight:bold;
+}
+
+/* ===============================
+   INSURANCE CONTACT BOX
+================================*/
+
+.insurance-contact-box{
+    margin-top:25px;
+    padding:25px 20px;
+    background:#16243d;
+    border-radius:12px;
+    text-align:center;
+    color:#fff;
+}
+
+.insurance-contact-box .contact-icon{
+    width:55px;
+    height:55px;
+    margin:0 auto 15px;
+    background:#f4a825;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:20px;
+}
+
+.insurance-contact-box h4{
+    font-size:18px;
+    margin-bottom:8px;
+    font-weight:600;
+    color: #e9eef5;
+}
+
+.insurance-contact-box p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:12px;
+}
+
+.insurance-contact-box a{
+    display:inline-block;
+    background:#f4a825;
+    color:#000;
+    padding:8px 15px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.insurance-contact-box a:hover{
+    background:#fff;
+    color:#16243d;
+}
+
+/* ===============================
+   INSURANCE HEADER SECTION
+================================*/
+
+.insurance-header-section{
+    padding:80px 20px 40px;
+    background:#f5f7fb;
+}
+
+.insurance-header__tagline{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#f4a825;
+    color:#000;
+    padding:6px 15px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.insurance-header__title{
+    font-size:40px;
+    font-weight:800;
+    color:#16243d;
+    margin-bottom:15px;
+}
+
+.insurance-header__text{
+    max-width:650px;
+    margin:0 auto;
+    color:#555;
+    font-size:16px;
+    line-height:1.7;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================*/
+
+@media(max-width:768px){
+    .insurance-header__title{
+        font-size:28px;
+    }
+}
+
+@media(max-width:992px){
+    .insurance-wrapper{
+        flex-direction:column;
+    }
+
+    .insurance-menu{
+        width:100%;
+    }
+}
+    </style>
+</head>
+
+<body class="custom-cursor ">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+
+    <div>
+         <header class="main-header-nine">
+            <div class="main-header-nine__shape" style="background-image: url(assets/images/home1/shapes/header-shape-1.webp);"></div>
+            <div class="main-header-nine__top">
+                <div class="container">
+                    <div class="main-header-nine__inner">
+                        <ul class="list-unstyled main-header-nine__info">
+                            <li>
+                                <span class="main-header-nine__info__icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                Salem, Tamilnadu, India.
+                            </li>
+                            <li>
+                                <span class="main-header-nine__info__icon">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <a href="mailto:needhelp@company.com">needhelp@stackly.com</a>
+                            </li>
+                        </ul>
+                        <div class="main-header-nine__social">
+                            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+                            <a href="404.html"><i class="fab fa-twitter"></i></a>
+                            <a href="404.html"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="404.html"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu main-menu-nine">
+                <div class="main-menu-nine__shape" style="background-image: url(assets/images/home1/shapes/header-shape-2.webp);"></div>
+                <div class="main-menu-nine__wrapper">
+                    <div class="main-menu-nine__logo">
+                        <a href="index.html">
+                            <img src="assets/images/home1/resources/logo.webp" width="159" alt="stackly">
+                        </a>
+                    </div>
+                    <div class="main-menu-nine__left">
+                        <div class="main-menu-nine__main-menu-box">
+                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                     <ul class="main-menu__list">
+
+    <!-- Home Dropdown -->
+    <li class="dropdown">
+        <a href="index.html">Home</a>
+        <ul>
+            <li><a href="index.html">Homepage 1</a></li>
+            <li><a href="index-dark.html">Homepage 2</a></li>
+        </ul>
+    </li>
+
+    <!-- Pages -->
+      <li>
+      <a href="about.html">About </a>
+      </li>
+
+                               <li>
+      <a href="service.html">Services </a>
+      </li>
+      <li>
+      <a href="dashboard.html">Dashboard </a>
+      </li>
+                               <li>
+                                    <a href="news.html">News</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">Contact </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-menu-nine__right">
+                        <div class="quote-icon">
+        <i class="fa-solid fa-arrows-rotate"></i>
+    </div>
+                        <a href="auth.html" class="thm-btn thm-btn--eight">Get a Quote</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="stricky-header stricked-menu main-menu main-menu-nine">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+
+<section class="stackly-breadcrumb">
+    <div class="breadcrumb-shape"></div>
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h1>Services</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Services</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+ <!--Services Eight Start-->
+        <section class="services-nine" style="background-image: url(assets/images/home1/shapes/service-bg-two.webp);">
+            <div class="services-nine__bg" style="background-image: url(assets/images/home1/backgrounds/service-two-bg.webp);"></div>
+            <div class="container">
+                <div class="section-title-seven text-center">
+                    <span class="section-title-seven__tagline"><span class="section-title-seven__tagline__icon"><i class="insur-four-icon-check"></i></span>Services</span>
+                    <h2 class="section-title-seven__title">We’re Covering All the<br> Insurance Services Files</h2>
+                </div>
+                <div class="row gutter-y-30">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                        <div class="services-nine__single">
+                            <div class="services-nine__single__content">
+                                <div class="services-nine__single__icon"><span class="insur-four-icon-governance"></span></div>
+                                <h3 class="services-nine__single__title"><a href="404.html">Car Insurance</a></h3>
+                                <p class="services-nine__single__text">
+                                     Our car insurance policies provide comprehensive coverage for your vehicle against accidents, theft, natural disasters, and third-party liabilities. We ensure quick claim processing and reliable support whenever you need it.
+                                </p>
+                                <a class="services-nine__single__rm" href="404.html">Read More<span class="insur-four-icon-right-arrow"></span></a>
+                            </div>
+                            <div class="services-nine__single__image">
+                                <img src="assets/images/home1/resources/service-9-1.webp" alt="stackly">
+                            </div>
+                        </div>
+                    </div><!--item-->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="services-nine__single">
+                            <div class="services-nine__single__image">
+                                <img src="assets/images/home1/resources/service-9-2.webp" alt="stackly">
+                            </div>
+                            <div class="services-nine__single__content">
+                                <div class="services-nine__single__icon"><span class="insur-four-icon-safety"></span></div>
+                                <h3 class="services-nine__single__title"><a href="404.html">Life Insurance</a></h3>
+                                <p class="services-nine__single__text">
+                                    Protect your family’s future with our flexible life insurance plans. We offer financial security, long-term savings benefits, and peace of mind to ensure your loved ones are safeguarded in every stage of life.
+                                </p>
+                                <a class="services-nine__single__rm" href="404.html">Read More<span class="insur-four-icon-right-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div><!--item-->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="services-nine__single">
+                            <div class="services-nine__single__content">
+                                <div class="services-nine__single__icon"><span class="insur-four-icon-insurance"></span></div>
+                                <h3 class="services-nine__single__title"><a href="404.html">Business insurance</a></h3>
+                                <p class="services-nine__single__text">
+                                    Our business insurance solutions protect your company from financial losses due to property damage, legal liabilities, and operational risks. We help you secure your assets and focus on growing your business confidently.
+                                </p>
+                                <a class="services-nine__single__rm" href="404.html">Read More<span class="insur-four-icon-right-arrow"></span></a>
+                            </div>
+                            <div class="services-nine__single__image">
+                                <img src="assets/images/home1/resources/service-9-3.webp" alt="stackly">
+                            </div>
+                        </div>
+                    </div><!--item-->
+                </div>
+            </div>
+        </section>
+        <!--Services Eight End-->
+<!-- Insurance Details Header Start -->
+<section class="insurance-header-section">
+    <div class="container">
+        <div class="insurance-header text-center">
+            <span class="insurance-header__tagline">
+                <i class="insur-four-icon-check"></i>
+                Insurance Details
+            </span>
+            <h2 class="insurance-header__title">
+                Explore Our Comprehensive<br>
+                Insurance Solutions
+            </h2>
+            <p class="insurance-header__text">
+                Choose the right insurance plan designed to protect your life,
+                property, business and future with trusted coverage.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Insurance Details Header End -->
+
+
+
+<section class="insurance-section">
+<div class="insurance-wrapper">
+
+<!-- LEFT MENU -->
+<div class="insurance-menu">
+<ul>
+<li class="active" onclick="showInsurance('car')">Car Insurance</li>
+<li onclick="showInsurance('life')">Life Insurance</li>
+<li onclick="showInsurance('health')">Health Insurance</li>
+<li onclick="showInsurance('home')">Home Insurance</li>
+<li onclick="showInsurance('business')">Business Insurance</li>
+<li onclick="showInsurance('travel')">Travel Insurance</li>
+<li onclick="showInsurance('fire')">Fire Insurance</li>
+<li onclick="showInsurance('marriage')">Marriage Insurance</li>
+</ul>
+<div class="insurance-contact-box">
+    <div class="contact-icon">
+        <i class="fas fa-phone-alt"></i>
+    </div>
+    <h4>Insurance Related Query?</h4>
+    <p>Need help? Contact us anytime</p>
+    <p class="contact-number">+91 12345 67890</p>
+</div>
+
+</div>
+
+<!-- RIGHT CONTENT -->
+<div class="insurance-content">
+
+<!-- CAR -->
+<div class="insurance-item active" id="car">
+<h2>Car Insurance</h2>
+<img src="assets/images/home1/resources/car.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 18 Years</span>
+<span>Max: 65 Years</span>
+</div>
+<p>Comprehensive protection for your vehicle against accidents, theft and third-party liability.</p>
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Accident Coverage</li>
+<li>Third Party Liability</li>
+<li>Cashless Garages</li>
+<li>Roadside Assistance</li>
+</ul>
+</div>
+
+<!-- LIFE -->
+<div class="insurance-item" id="life">
+<h2>Life Insurance</h2>
+<img src="assets/images/home1/resources/life.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 21 Years</span>
+<span>Max: 70 Years</span>
+</div>
+<p>Secure your family’s future with flexible and long-term life coverage plans.</p>
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Financial Protection</li>
+<li>Tax Benefits</li>
+<li>Maturity Benefits</li>
+<li>Accidental Riders</li>
+</ul>
+</div>
+
+<!-- HEALTH -->
+<div class="insurance-item" id="health">
+<h2>Health Insurance</h2>
+<img src="assets/images/home1/resources/health.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 18 Years</span>
+<span>Max: 75 Years</span>
+</div>
+<p>Complete medical coverage including hospitalization and surgeries.</p>
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Cashless Treatment</li>
+<li>Pre & Post Hospitalization</li>
+<li>Critical Illness Cover</li>
+</ul>
+</div>
+
+<!-- HOME -->
+<!-- HOME -->
+<div class="insurance-item" id="home">
+<h2>Home Insurance</h2>
+<img src="assets/images/home1/resources/house.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 25 Years</span>
+<span>Max: 75 Years</span>
+</div>
+
+<p>Protect your property and valuables against fire, theft, natural disasters and structural damage.</p>
+
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Structure & Building Protection</li>
+<li>Contents & Furniture Coverage</li>
+<li>Fire & Natural Disaster Coverage</li>
+<li>Burglary & Theft Protection</li>
+<li>Temporary Accommodation Support</li>
+</ul>
+
+<h4>Exclusions</h4>
+<p>Intentional damage, war risks, and unoccupied property damages are not covered.</p>
+</div>
+
+<!-- BUSINESS -->
+<div class="insurance-item" id="business">
+<h2>Business Insurance</h2>
+<img src="assets/images/home1/resources/business.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 25 Years</span>
+<span>Max: 70 Years</span>
+</div>
+
+<p>Safeguard your company from financial risks, employee liabilities and operational disruptions.</p>
+
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Property & Asset Protection</li>
+<li>Public Liability Coverage</li>
+<li>Employee Compensation Insurance</li>
+<li>Professional Indemnity Protection</li>
+<li>Business Interruption Coverage</li>
+</ul>
+
+<h4>Exclusions</h4>
+<p>Fraudulent claims, intentional misconduct and illegal activities are excluded.</p>
+</div>
+
+<!-- TRAVEL -->
+<div class="insurance-item" id="travel">
+<h2>Travel Insurance</h2>
+<img src="assets/images/home1/resources/travel.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 18 Years</span>
+<span>Max: 65 Years</span>
+</div>
+
+<p>Coverage for domestic and international travel including medical emergencies and trip cancellations.</p>
+
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Medical Emergency Coverage</li>
+<li>Trip Cancellation Protection</li>
+<li>Lost Baggage Assistance</li>
+<li>Passport Loss Coverage</li>
+<li>24/7 Global Support</li>
+</ul>
+
+<h4>Exclusions</h4>
+<p>Pre-existing medical conditions and risky adventure sports are not covered unless specified.</p>
+</div>
+
+<!-- FIRE -->
+<div class="insurance-item" id="fire">
+<h2>Fire Insurance</h2>
+<img src="assets/images/home1/resources/fire.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 21 Years</span>
+<span>Max: 70 Years</span>
+</div>
+
+<p>Comprehensive protection against fire-related damages to property, equipment and stock.</p>
+
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Fire & Explosion Coverage</li>
+<li>Lightning & Natural Calamities</li>
+<li>Industrial Fire Protection</li>
+<li>Stock & Inventory Coverage</li>
+<li>Reconstruction Support</li>
+</ul>
+
+<h4>Exclusions</h4>
+<p>Negligence, electrical short circuits without protection and war damages are excluded.</p>
+</div>
+
+<!-- MARRIAGE -->
+<div class="insurance-item" id="marriage">
+<h2>Marriage Insurance</h2>
+<img src="assets/images/home1/resources/marriage.webp" alt="">
+<div class="age-box">Eligible ages:
+<span>Min: 21 Years</span>
+<span>Max: 60 Years</span>
+</div>
+
+<p>Financial protection against unexpected wedding cancellations or disruptions.</p>
+
+<h4>Key Benefits</h4>
+<ul class="feature-list">
+<li>Wedding Cancellation Coverage</li>
+<li>Vendor Failure Protection</li>
+<li>Event Postponement Coverage</li>
+<li>Jewelry & Gift Protection</li>
+<li>Public Liability Coverage</li>
+</ul>
+
+<h4>Exclusions</h4>
+<p>Intentional cancellation and non-refundable deposits without valid reason are excluded.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+  <!--Site Footer Four Start-->
+        <footer class="site-footer-five site-footer-five--home-nine">
+            <div class="site-footer-five__shape-one" style="background-image: url(assets/images/home1/shapes/footer-shape-1.webp);"></div>
+            <div class="site-footer-five__shape-two" style="background-image: url(assets/images/home1/shapes/footer-shape-2.webp);"></div>
+            <div class="site-footer-five__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                            <div class="site-footer-five__column site-footer-five__about">
+                                <h3 class="site-footer-five__title">About</h3>
+                                <p class="site-footer-five__about__text">
+                                     We provide reliable insurance solutions designed to protect your future and ensure financial security. Our goal is to offer trusted coverage with excellent customer support.
+                                </p>
+                                <form class="site-footer-five__about__form">
+    <input type="email" placeholder="Email Address" name="email">
+    <button type="submit">
+        <i class="insur-four-icon-right-arrow"></i>
+    </button>
+    <div class="footer-form-message"></div>
+</form>
+                                <div class="site-footer-five__about__social">
+                                    <a href="404.html">
+                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                        <span class="sr-only">Facebook</span>
+                                    </a>
+                                    <a href="404.html">
+                                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                                        <span class="sr-only">Twitter</span>
+                                    </a>
+                                    <a href="404.html">
+                                        <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                                        <span class="sr-only">Pinterest</span>
+                                    </a>
+                                    <a href="404.html">
+                                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                                        <span class="sr-only">Instagram</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="site-footer-five__column site-footer-five__contact">
+                                <a href="index.html" class="site-footer-five__contact__logo"><img src="assets/images/home1/resources/logo.webp" width="159" alt="stackly"></a>
+                                <ul class="site-footer-five__contact__list list-unstyled">
+                                    <li>
+                                        <div class="site-footer-five__contact__icon">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                        <div class="site-footer-five__contact__content">
+                                            <p class="site-footer-five__contact__text">support@stackly.com</p>
+                                            <p class="site-footer-five__contact__text">www.thestackly.com</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="site-footer-five__contact__icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="site-footer-five__contact__content">
+                                            <p class="site-footer-five__contact__text">Salem, Tamilnadu<br>India.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="site-footer-five__contact__call">
+                                    <div class="site-footer-five__contact__call__icon"><i class="fas fa-phone-alt"></i></div>
+                                    <div class="site-footer-five__contact__call__title">Emergency call</div>
+                                    <a class="site-footer-five__contact__call__text">+91 1234567890</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="site-footer-five__column site-footer-five__links clearfix">
+                                <h3 class="site-footer-five__title">Qucik Links</h3>
+                                <ul class="site-footer-five__links__list list-unstyled clearfix">
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="service.html">Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="news.html">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="dashboard.html">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Get in Touch</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="site-footer-five__column site-footer-five__gallery clearfix">
+                                <h3 class="site-footer-five__title">Gallery</h3>
+                                <div class="site-footer-five__gallery__wrapper">
+                                    <img src="assets/images/home1/resources/footer-widget-gallery-img-1.webp" alt="stackly">
+                                    <img src="assets/images/home1/resources/footer-widget-gallery-img-2.webp" alt="stackly">
+                                    <img src="assets/images/home1/resources/footer-widget-gallery-img-3.webp" alt="stackly">
+                                    <img src="assets/images/home1/resources/footer-widget-gallery-img-4.webp" alt="stackly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-footer-five__bottom">
+                <div class="container">
+                    <p class="site-footer-five__bottom__text">© All Copyright 2026 by Stackly</p>
+                </div>
+            </div>
+        </footer>
+        <!--Site Footer Four End-->
+
+    </div><!-- /.page-wrapper -->
+
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="assets/images/home1/resources/logo.webp" width="143"
+                        alt=""></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a>needhelp@stackly.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a>+91 1234567890</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-facebook-square"></a>
+                    <a href="#" class="fab fa-pinterest-p"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                </div><!-- /.mobile-nav__social -->
+            </div><!-- /.mobile-nav__top -->
+
+
+
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                <input type="text" id="search" placeholder="Search Here...">
+                <button type="submit" aria-label="search submit" class="thm-btn thm-btn--eight">
+                    <i class="icon-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+<script>
+document.querySelectorAll(".site-footer-five__about__form")
+.forEach(function(form){
+
+    form.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const email = form.querySelector("input[name='email']").value.trim();
+        const messageBox = form.querySelector(".footer-form-message");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        messageBox.textContent = "";
+
+        if(email === ""){
+            showFooterMessage(messageBox, "Please enter your email address.");
+            return;
+        }
+
+        if(!emailPattern.test(email)){
+            showFooterMessage(messageBox, "Please enter a valid email.");
+            return;
+        }
+
+        // If valid → redirect
+        window.location.href = "404.html";
+
+    });
+
+});
+
+function showFooterMessage(element, message){
+    element.textContent = message;
+    setTimeout(function(){
+        element.textContent = "";
+    }, 2000);
+}
+</script>
+
+    <script>
+function showInsurance(id){
+
+document.querySelectorAll('.insurance-menu li')
+.forEach(li => li.classList.remove('active'));
+
+event.target.classList.add('active');
+
+document.querySelectorAll('.insurance-item')
+.forEach(item => item.classList.remove('active'));
+
+document.getElementById(id).classList.add('active');
+}
+</script>
+
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/timepicker/timePicker.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+
+
+    <!-- template js -->
+    <script src="assets/js/insur.js"></script>
+</body>
+
+</html>

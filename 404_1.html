@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found | Stackly</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+    --navy:#0f1b36;
+    --navy-light:#1e2f59;
+    --gold:#0c84ff;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+html,body{
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:linear-gradient(135deg,var(--navy),var(--navy-light));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    color:var(--white);
+}
+
+/* Moving Gradient Glow */
+body::before{
+    content:"";
+    position:absolute;
+    width:800px;
+    height:800px;
+    background:radial-gradient(circle,var(--gold),transparent 60%);
+    top:-250px;
+    right:-250px;
+    opacity:0.15;
+    animation:moveGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes moveGlow{
+    from{ transform:translate(0,0); }
+    to{ transform:translate(-50px,50px); }
+}
+
+/* Floating Particles */
+.particle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:var(--gold);
+    border-radius:50%;
+    opacity:0.5;
+    animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+        opacity:0.7;
+    }
+    to{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+
+/* Container */
+.container{
+    text-align:center;
+    max-width:750px;
+    padding:40px;
+    position:relative;
+    z-index:2;
+}
+
+/* Logo */
+.logo{
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:200px;
+}
+
+/* 404 Text */
+.error-code{
+    font-size:150px;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--gold),#ffd36b);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+}
+
+h1{
+    font-size:34px;
+    margin:15px 0;
+}
+
+p{
+    font-size:18px;
+    opacity:0.8;
+    margin-bottom:35px;
+}
+
+/* Buttons */
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 30px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,#0c84ff,#ffd36b);
+    color:#000;
+    box-shadow:0 10px 25px rgba(244,168,37,0.4);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-outline{
+    border:2px solid var(--gold);
+    color:var(--gold);
+}
+
+.btn-outline:hover{
+    background:var(--gold);
+    color:#000;
+}
+
+/* Decorative Gold Curve */
+.curve{
+    position:absolute;
+    right:-150px;
+    bottom:-150px;
+    width:450px;
+    height:450px;
+    border:50px solid var(--gold);
+    border-left-color:transparent;
+    border-top-color:transparent;
+    border-radius:50%;
+    opacity:0.15;
+    animation:rotate 20s linear infinite;
+}
+
+@keyframes rotate{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+@media(max-width:768px){
+    .error-code{ font-size:100px; }
+    h1{ font-size:22px; }
+    p{ font-size:15px; }
+}
+
+
+/* Top Left Gold Curve */
+.curve1{
+    position:absolute;
+    top:-180px;
+    left:-400px;
+    width:500px;
+    height:500px;
+    border:55px solid #0c84ff;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:50%;
+    opacity:0.15;
+    animation:rotate 25s linear infinite;
+}
+
+/* Smooth rotation */
+@keyframes rotate{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Particles -->
+<div class="particle" style="left:10%; animation-delay:0s;"></div>
+<div class="particle" style="left:25%; animation-delay:2s;"></div>
+<div class="particle" style="left:40%; animation-delay:4s;"></div>
+<div class="particle" style="left:60%; animation-delay:1s;"></div>
+<div class="particle" style="left:75%; animation-delay:3s;"></div>
+
+<div class="container">
+<div class="curve1"></div>
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="assets/images/home2/resources/logo.webp" alt="Stackly Logo">
+    </div>
+
+    <div class="error-code">404</div>
+
+    <h1>Oops! Page Not Found</h1>
+
+    <p>The page you are looking for might have been removed or is temporarily unavailable.</p>
+
+    <div class="buttons">
+        <a href="index-dark.html" class="btn btn-primary">
+            <i class="fa-solid fa-house"></i> Back to Home
+        </a>
+        <a href="contact1.html" class="btn btn-outline">
+            <i class="fa-solid fa-headset"></i> Contact Support
+        </a>
+    </div>
+
+</div>
+
+<div class="curve"></div>
+
+</body>
+</html>

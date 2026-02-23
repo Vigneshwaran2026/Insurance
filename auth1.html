@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Authentication</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#015fc9;
+    --secondary:#0ce0ff;
+    --dark:#16243d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+
+html, body{
+    height:100%;
+    overflow:hidden; /* NO SCROLL */
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#16243d,#015fc9);
+    padding:0;   /* remove large padding */
+}
+
+.form-error{
+    margin-top:15px;
+    font-size:14px;
+    color:#e53935;
+    text-align:center;
+    min-height:20px;
+    font-weight:500;
+}
+
+
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(rgba(12,224,255,0.8) 1.5px, transparent 1.5px);
+    background-size:30px 30px;
+    animation: moveDots 20s linear infinite,
+               blinkDots 2s ease-in-out infinite alternate;
+    z-index:0;
+}
+
+@keyframes moveDots{
+    from{ background-position:0 0; }
+    to{ background-position:200px 200px; }
+}
+
+@keyframes blinkDots{
+    0%{ opacity:0.4; }
+    100%{ opacity:1; }
+}
+
+
+.auth-card{
+    position:relative;
+    width:100%;
+    max-width:1000px;
+    height:500px;   /* reduced */
+    max-height:100vh;
+    border-radius:25px;
+    display:flex;
+    overflow:hidden;
+    z-index:1;
+}
+
+
+.auth-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:25px;
+    padding:2px;
+    background:linear-gradient(
+        120deg,
+        #015fc9,
+        #0ce0ff,
+        #015fc9
+    );
+    background-size:300% 300%;
+    animation:borderMove 6s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+}
+
+
+.auth-card{
+    background:#ffffff;
+    box-shadow:0 30px 70px rgba(0,0,0,0.35);
+}
+
+@keyframes borderMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.left{
+    flex:1;
+    padding:50px 50px;
+    background:linear-gradient(135deg,#2b4d7a,#3a5f8f);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:40px;
+}
+
+.logo img{
+    width:200px;
+}
+
+.left h1{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.left p{
+    font-size:18px;
+    opacity:0.85;
+    line-height:1.6;
+}
+
+.right{
+    flex:1;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    background:linear-gradient(
+        rgba(255,255,255,0.5),
+        rgba(255,255,255,0.92)
+    ),
+    url('assets/images/home1/backgrounds/slider-9-2.webp');
+    background-size:cover;
+    background-position:center;
+}
+
+
+.form-wrapper{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(15px);
+    padding:15px 30px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.form-box{
+    display:none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.form-box.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateX(20px);}
+    to{opacity:1; transform:translateX(0);}
+}
+
+h2{
+    font-size:26px;
+    margin-bottom:20px;
+    color:#1f2c45;
+    font-weight:700;
+}
+
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 0;
+    border:none;
+    border-bottom:2px solid #e0e0e0;
+    font-size:16px;
+    outline:none;
+    transition:0.3s;
+    background:transparent;
+}
+
+.input-group input:focus{
+    border-bottom:2px solid #015fc9;
+}
+
+
+.options{
+    text-align:right;
+    margin-bottom:30px;
+}
+
+.options a{
+    color:var(--primary);
+    text-decoration:none;
+    font-size:15px;
+    cursor:pointer;
+}
+
+
+button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#015fc9,#0ce0ff);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s ease;
+    box-shadow:0 10px 20px rgba(1,95,201,0.3);
+}
+
+button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(1,95,201,0.4);
+}
+
+.switch{
+    margin-top:25px;
+    text-align:center;
+    font-size:15px;
+}
+
+.switch a{
+    color:var(--primary);
+    text-decoration:none;
+    font-weight:600;
+    cursor:pointer;
+}
+
+
+@media (max-width: 992px){
+
+    body{
+        align-items:flex-start;
+        padding:30px 15px;
+    }
+
+    .auth-card{
+        flex-direction:column;
+        min-height:auto;
+        border-radius:20px;
+    }
+
+    .auth-card::before{
+        border-radius:20px;
+    }
+
+    .left{
+        padding:40px 25px;
+        text-align:center;
+    }
+
+    .logo{
+        justify-content:center;
+        margin-bottom:25px;
+    }
+
+    .logo img{
+        width:140px;
+    }
+
+    .left h1{
+        font-size:28px;
+    }
+
+    .left p{
+        font-size:16px;
+    }
+
+    .right{
+        padding:40px 25px;
+        z-index:1;
+    }
+
+    .form-wrapper{
+        max-width:100%;
+    }
+
+    h2{
+        font-size:24px;
+        margin-bottom:25px;
+        text-align:center;
+    }
+
+    .input-group{
+        margin-bottom:20px;
+    }
+
+    .input-group input{
+        font-size:15px;
+    }
+
+    button{
+        padding:12px;
+        font-size:15px;
+    }
+
+    .switch{
+        font-size:14px;
+    }
+}
+
+@media (max-width: 480px){
+
+    body{
+        padding:20px 10px;
+    }
+
+    .auth-card{
+        border-radius:16px;
+    }
+
+    .left{
+        padding:30px 20px;
+    }
+
+    .right{
+        padding:30px 20px;
+    }
+
+    .logo img{
+        width:110px;
+    }
+
+    .left h1{
+        font-size:24px;
+    }
+
+    .left p{
+        font-size:14px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+}
+
+
+.home-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#ffffff;
+    color:#015fc9;
+    padding:8px 16px;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    transition:0.3s ease;
+    z-index:10;
+}
+
+.home-btn i{
+    font-size:14px;
+}
+
+.home-btn:hover{
+    background:#015fc9;
+    color:#ffffff;
+    transform:translateY(-3px);
+}
+
+@media(max-width:992px){
+    .home-btn{
+        top:15px;
+        right:15px;
+        padding:6px 12px;
+        font-size:12px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="auth-card">
+
+      <a href="index-dark.html" class="home-btn">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
+
+    <div class="left">
+        <div class="logo">
+            <img src="assets/images/home1/resources/logo.webp">
+        </div>
+
+        <h1>Secure Your Future</h1>
+        <p>Reliable Insurance Coverage for Life, Health & Business Protection.</p>
+    </div>
+
+    <div class="right">
+        <div class="form-wrapper">
+
+            <div class="form-box active" id="login">
+                <h2>Login</h2>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address">
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password">
+                </div>
+
+                <div class="options">
+                    <a onclick="showForgot()">Forgot Password?</a>
+                </div>
+
+                <button>Login</button>
+<p class="form-error"></p>
+
+                <div class="switch">
+                    Don't have an account?
+                    <a onclick="showRegister()">Register</a>
+                </div>
+            </div>
+
+            <div class="form-box" id="register">
+                <h2>Create Account</h2>
+
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name">
+                </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address">
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password">
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Confirm Password">
+                </div>
+
+                <button>Create Account</button>
+<p class="form-error"></p>
+
+                <div class="switch">
+                    Already have an account?
+                    <a onclick="showLogin()">Login</a>
+                </div>
+            </div>
+
+            <div class="form-box" id="forgot">
+                <h2>Reset Password</h2>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Enter Your Email">
+                </div>
+
+                <button>Send Reset Link</button>
+<p class="form-error"></p>
+
+                <div class="switch">
+                    Back to
+                    <a onclick="showLogin()">Login</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+function showRegister(){
+    document.querySelectorAll('.form-box').forEach(f => f.classList.remove('active'));
+    document.getElementById('register').classList.add('active');
+}
+
+function showLogin(){
+    document.querySelectorAll('.form-box').forEach(f => f.classList.remove('active'));
+    document.getElementById('login').classList.add('active');
+}
+
+function showForgot(){
+    document.querySelectorAll('.form-box').forEach(f => f.classList.remove('active'));
+    document.getElementById('forgot').classList.add('active');
+}
+</script>
+
+<script>
+
+
+function showRegister(){
+    switchForm('register');
+}
+function showLogin(){
+    switchForm('login');
+}
+function showForgot(){
+    switchForm('forgot');
+}
+function switchForm(id){
+    document.querySelectorAll('.form-box').forEach(f => f.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+
+
+function validateEmail(email){
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+}
+
+function validatePassword(password){
+    const pattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return pattern.test(password);
+}
+
+function showError(formId, message){
+    const errorBox = document.querySelector(`#${formId} .form-error`);
+    errorBox.textContent = message;
+}
+
+function clearError(formId){
+    const errorBox = document.querySelector(`#${formId} .form-error`);
+    errorBox.textContent = "";
+}
+
+
+document.querySelector("#login button").addEventListener("click", function(e){
+    e.preventDefault();
+    clearError("login");
+
+    const email = document.querySelector("#login input[type='email']").value.trim();
+    const password = document.querySelector("#login input[type='password']").value.trim();
+
+    if(email === "" || password === ""){
+        return showError("login","Please fill all fields.");
+    }
+
+    if(!validateEmail(email)){
+        return showError("login","Email must be example@yoursite.com");
+    }
+
+    if(!validatePassword(password)){
+        return showError("login","Password must contain 8 chars, 1 uppercase, 1 number & 1 special character.");
+    }
+
+    window.location.href = "404.html";
+});
+
+
+document.querySelector("#register button").addEventListener("click", function(e){
+    e.preventDefault();
+    clearError("register");
+
+    const name = document.querySelector("#register input[type='text']").value.trim();
+    const email = document.querySelector("#register input[type='email']").value.trim();
+    const password = document.querySelector("#register input[type='password']").value.trim();
+    const confirm = document.querySelectorAll("#register input[type='password']")[1].value.trim();
+
+    if(name === "" || email === "" || password === "" || confirm === ""){
+        return showError("register","Please fill all fields.");
+    }
+
+    if(!validateEmail(email)){
+        return showError("register","Email must be example@yoursite.com");
+    }
+
+    if(!validatePassword(password)){
+        return showError("register","Password must contain 8 chars, 1 uppercase, 1 number & 1 special character.");
+    }
+
+    if(password !== confirm){
+        return showError("register","Passwords do not match.");
+    }
+
+    window.location.href = "404.html";
+});
+
+
+document.querySelector("#forgot button").addEventListener("click", function(e){
+    e.preventDefault();
+    clearError("forgot");
+
+    const email = document.querySelector("#forgot input[type='email']").value.trim();
+
+    if(email === ""){
+        return showError("forgot","Please enter your email.");
+    }
+
+    if(!validateEmail(email)){
+        return showError("forgot","Email must be example@yoursite.com");
+    }
+
+    window.location.href = "404_1.html";
+});
+
+</script>
+
+
+</body>
+</html>
