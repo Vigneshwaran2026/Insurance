@@ -633,3 +633,93 @@ body,
     background: #111 !important;
     caret-color: #fff !important;
 }
+
+/* =========================================
+   MOBILE HEADER FIX
+========================================= */
+@media (max-width: 1199px) {
+
+    /* Hide call/contact section on mobile */
+    .main-menu__right {
+        display: none !important;
+    }
+
+    /* Make header layout flex */
+    .main-menu__wrapper-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Keep logo left */
+    .main-menu__left {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Hamburger right corner */
+    .mobile-nav__buttons {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* Hide desktop menu */
+    .main-menu__main-menu-box {
+        display: none !important;
+    }
+}
+
+
+/* =====================================
+   PERFECT MOBILE HEADER ALIGN FIX
+===================================== */
+
+@media (max-width: 1199px) {
+
+    /* Hide call section */
+    .main-menu__right {
+        display: none !important;
+    }
+
+    /* Hide desktop menu */
+    .main-menu__main-menu-box {
+        display: none !important;
+    }
+
+    /* Make wrapper full flex */
+    .main-menu__wrapper-inner {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center;
+    }
+
+    /* Make left side take full width */
+    .main-menu__left {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Move hamburger to right */
+    .mobile-nav__buttons {
+        margin-left: auto !important;
+        display: block !important;
+    }
+}
+
+/* ==========================
+   MOBILE NAV QUOTE BUTTON
+========================== */
+
+.mobile-nav__quote-btn {
+    margin-top: 25px;
+    padding: 0 20px 30px;
+}
+
+.mobile-nav__quote-btn .mobile-quote-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+}

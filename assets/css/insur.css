@@ -34517,3 +34517,19 @@ input:focus, textarea:focus {
 .input-error {
     border-color: red !important;
 }
+
+/* ==========================
+   MOBILE NAV QUOTE BUTTON
+========================== */
+
+.mobile-nav__quote-btn {
+    margin-top: 25px;
+    padding: 0 20px 30px;
+}
+
+.mobile-nav__quote-btn .mobile-quote-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+}
