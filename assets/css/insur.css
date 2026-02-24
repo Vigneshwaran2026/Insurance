@@ -13870,9 +13870,6 @@ body.boxed-wrapper {
   color: var(--insur-base);
 }
 
-/*--------------------------------------------------------------
-# Update 10/02/2023
---------------------------------------------------------------*/
 /* Section Title Two Start */
 .section-title-two {
   position: relative;
@@ -21056,9 +21053,7 @@ ul li ul .is-new-menu > a > span::after {
   left: 0;
 }
 
-/*--------------------------------------------------------------
-# Insur Update 17-06-2023
---------------------------------------------------------------*/
+
 /* Thm Btn Three */
 .thm-btn-three {
   position: relative;
@@ -27706,9 +27701,7 @@ ul li ul .is-new-menu > a > span::after {
     float: right;
   }
 }
-/*--------------------------------------------------------------
-# Update 10/02/2023 All Responsice Css
---------------------------------------------------------------*/
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .feature-five__single {
     padding: 0 20px 0px;
@@ -28300,9 +28293,7 @@ ul li ul .is-new-menu > a > span::after {
     padding: 16px 10px 16px;
   }
 }
-/*--------------------------------------------------------------
-# Update 10/02/2023 Main Menu All Responsice Css
---------------------------------------------------------------*/
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-menu-four__top-social {
     display: none;
@@ -28378,9 +28369,7 @@ ul li ul .is-new-menu > a > span::after {
     padding: 32px 0;
   }
 }
-/*--------------------------------------------------------------
-# Update 10/02/2023 Main Slider All Responsice Css
---------------------------------------------------------------*/
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-slider-four__img {
     display: none;
@@ -28527,9 +28516,7 @@ ul li ul .is-new-menu > a > span::after {
     margin-bottom: 10px;
   }
 }
-/*--------------------------------------------------------------
-# Update 17/06/2023 Main Slider All Responsice Css
---------------------------------------------------------------*/
+
 @media only screen and (min-width: 1200px) and (max-width: 1350px) {
   .get-insuracne-three__right {
     margin-left: 0;
