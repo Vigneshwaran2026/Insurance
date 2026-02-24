@@ -723,3 +723,13 @@ body,
     width: 100%;
     border-radius: 8px;
 }
+
+
+/* ===== Fix Swiper Fade Overlap Issue ===== */
+.main-slider {
+    min-height: 700px;
+}
+
+.main-slider .swiper-slide {
+    min-height: 700px;
+}
