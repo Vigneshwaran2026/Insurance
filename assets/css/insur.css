@@ -29937,9 +29937,9 @@ ul li ul .is-new-menu > a > span::after {
 .main-menu-nine__call {
   position: relative;
   min-height: 40px;
-  padding: 8px 0 0 51px;
-  margin-left: 25px;
-  margin-right: 105px;
+  padding: 8px 0 0 45px;
+  margin-left: 20px;
+  margin-right: 90px;
 }
 @media (min-width: 1200px) and (max-width: 1499px) {
   .main-menu-nine__call {
@@ -31039,6 +31039,8 @@ ul li ul .is-new-menu > a > span::after {
   position: relative;
   padding: 120px 0 158px;
 }
+
+
 @media (max-width: 767px) {
   .about-ten {
     padding: 80px 0;
@@ -34319,6 +34321,7 @@ ul li ul .is-new-menu > a > span::after {
     background:linear-gradient(120deg,#f4a825 0%, #f4a825 40%, transparent 40%);
     opacity:0.2;
     pointer-events:none;
+    overflow: hidden;
 }
 
 .breadcrumb-content{
@@ -34534,3 +34537,24 @@ input:focus, textarea:focus {
     border-radius: 8px;
 
 }
+
+
+/* Remove extra bottom white space */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section:last-child,
+footer:last-child {
+    margin-bottom: 0 !important;
+}
+
+.page {
+    overflow: hidden;
+}
+
