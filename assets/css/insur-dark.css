@@ -732,3 +732,55 @@ body,
 .section-sub-title {
     color: var(--insur-primary) !important;
 }
+
+/* ===============================
+   FIX HEADER WRAPPING AT 100%
+================================ */
+
+/* Make wrapper flexible */
+.main-menu__wrapper-inner {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* Keep left side inline */
+.main-menu__left {
+    display: flex;
+    align-items: center;
+}
+
+/* Keep right side inline */
+.main-menu__right {
+    float: none !important;
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    white-space: nowrap;
+}
+
+/* Prevent call text from breaking */
+.main-menu__call-content {
+    white-space: nowrap;
+}
+
+/* Reduce spacing slightly if needed */
+.main-menu__main-menu-box-search-get-quote-btn {
+    padding-left: 40px;
+}
+
+/* Fix Get Quote button text breaking */
+.main-menu__main-menu-box-get-quote-btn {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    min-width: 170px;   /* enough width for single line */
+}
+
+/* Optional – prevent container shrink */
+.main-menu__main-menu-box-get-quote-btn-box {
+    flex-shrink: 0;
+}
