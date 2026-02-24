@@ -724,12 +724,11 @@ body,
     border-radius: 8px;
 }
 
-
-/* ===== Fix Swiper Fade Overlap Issue ===== */
-.main-slider {
-    min-height: 700px;
+/* Fix Section Title Visibility in Dark Theme */
+.section-title__title {
+    color: #ffffff !important;
 }
 
-.main-slider .swiper-slide {
-    min-height: 700px;
+.section-sub-title {
+    color: var(--insur-primary) !important;
 }
